@@ -10,21 +10,23 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `db_toko` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `db_toko`;
 
+DROP TABLE IF EXISTS `barang_keluar`;
 CREATE TABLE `barang_keluar` (
   `id_barang_keluar` int NOT NULL,
-  `kode_barang` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
-  `nama_barang` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `jenis_barang` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
-  `jumlah` varchar(11) COLLATE utf8mb4_general_ci NOT NULL,
+  `kode_barang` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_barang` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `jenis_barang` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `jumlah` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `tgl_kirim` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TRIGGER IF EXISTS `update stok tiap barang keluar`;
 DELIMITER $$
 CREATE TRIGGER `update stok tiap barang keluar` AFTER INSERT ON `barang_keluar` FOR EACH ROW BEGIN
 	IF EXISTS(SELECT * FROM stok WHERE stok.kode_barang = NEW.kode_barang) THEN
     	UPDATE
         	stok,
-            (SELECT SUM(jumlah) as total FROM barang_masuk WHERE barang_masuk.kode_barang = NEW.kode_barang) as masuk,
-            (SELECT SUM(jumlah) as total FROM barang_keluar WHERE barang_keluar.kode_barang = NEW.kode_barang) as keluar
+            (SELECT COALESCE(SUM(jumlah), 0) as total FROM barang_masuk WHERE barang_masuk.kode_barang = NEW.kode_barang) as masuk,
+            (SELECT COALESCE(SUM(jumlah), 0) as total FROM barang_keluar WHERE barang_keluar.kode_barang = NEW.kode_barang) as keluar
         	SET
             	stok.stok = masuk.total - keluar.total
             WHERE stok.kode_barang = new.kode_barang;
@@ -35,21 +37,23 @@ END
 $$
 DELIMITER ;
 
+DROP TABLE IF EXISTS `barang_masuk`;
 CREATE TABLE `barang_masuk` (
   `id_barang_masuk` int NOT NULL,
-  `kode_barang` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
-  `nama_barang` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `jenis_barang` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
-  `jumlah` varchar(11) COLLATE utf8mb4_general_ci NOT NULL,
+  `kode_barang` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_barang` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `jenis_barang` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `jumlah` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `tanggal_masuk` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TRIGGER IF EXISTS `update stok tiap barang masuk`;
 DELIMITER $$
 CREATE TRIGGER `update stok tiap barang masuk` AFTER INSERT ON `barang_masuk` FOR EACH ROW BEGIN
 	IF EXISTS(SELECT * FROM stok WHERE stok.kode_barang = NEW.kode_barang) THEN
     	UPDATE
         	stok,
-            (SELECT SUM(jumlah) as total FROM barang_masuk WHERE barang_masuk.kode_barang = NEW.kode_barang) as masuk,
-            (SELECT SUM(jumlah) as total FROM barang_keluar WHERE barang_keluar.kode_barang = NEW.kode_barang) as keluar
+            (SELECT COALESCE(SUM(jumlah), 0) as total FROM barang_masuk WHERE barang_masuk.kode_barang = NEW.kode_barang) as masuk,
+            (SELECT COALESCE(SUM(jumlah), 0) as total FROM barang_keluar WHERE barang_keluar.kode_barang = NEW.kode_barang) as keluar
         	SET
             	stok.stok = masuk.total - keluar.total
             WHERE stok.kode_barang = new.kode_barang;
@@ -60,11 +64,12 @@ END
 $$
 DELIMITER ;
 
+DROP TABLE IF EXISTS `stok`;
 CREATE TABLE `stok` (
-  `kode_barang` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
-  `nama_barang` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `jenis_barang` varchar(25) COLLATE utf8mb4_general_ci NOT NULL,
-  `stok` varchar(11) COLLATE utf8mb4_general_ci NOT NULL
+  `kode_barang` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_barang` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `jenis_barang` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `stok` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
