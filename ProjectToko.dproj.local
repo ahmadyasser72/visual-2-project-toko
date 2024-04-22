@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/04/17 11:19:39.000.185,=C:\Users\x\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/04/17 11:19:57.000.772,C:\Users\x\Documents\Embarcadero\Studio\Projects\Umenuutama.dfm=C:\Users\x\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2024/04/17 11:19:57.000.772,C:\Users\x\Documents\Embarcadero\Studio\Projects\Umenuutama.pas=C:\Users\x\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/04/17 11:20:29.000.437,C:\Users\x\Documents\Embarcadero\Studio\Projects\ProjectToko.dproj=C:\Users\x\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2024/04/17 11:23:46.000.196,=C:\Users\x\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/04/17 11:23:59.000.490,C:\Users\x\Documents\Embarcadero\Studio\Projects\Ubarangmasuk.dfm=C:\Users\x\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2024/04/17 11:23:59.000.490,C:\Users\x\Documents\Embarcadero\Studio\Projects\Ubarangmasuk.pas=C:\Users\x\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/04/17 22:24:19.000.003,=C:\Users\x\Documents\Embarcadero\Studio\Projects\Ubarangkeluar.pas</Transaction>
+    <Transaction>2024/04/20 00:30:43.000.863,=C:\Users\x\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/04/20 00:32:17.000.896,C:\Users\x\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\x\Documents\Embarcadero\Studio\Projects\Ustok.dfm</Transaction>
+    <Transaction>2024/04/20 00:32:17.000.896,C:\Users\x\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\x\Documents\Embarcadero\Studio\Projects\Ustok.pas</Transaction>
+  </Transactions>
+</BorlandProject>
