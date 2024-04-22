@@ -97,8 +97,6 @@ object FormBarangMasuk: TFormBarangMasuk
     Top = 248
     Width = 200
     Height = 21
-    Date = 45656.000000000000000000
-    Time = 45656.000000000000000000
     TabOrder = 4
   end
   object ButtonTambah: TButton

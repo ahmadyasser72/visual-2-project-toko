@@ -1,9 +1,11 @@
 object FormMenuUtama: TFormMenuUtama
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Toko Delphi'
-  ClientHeight = 341
-  ClientWidth = 664
+  ClientHeight = 351
+  ClientWidth = 674
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,6 +15,8 @@ object FormMenuUtama: TFormMenuUtama
   FormStyle = fsMDIForm
   Menu = MainMenu1
   OldCreateOrder = False
+  Position = poScreenCenter
+  Visible = True
   PixelsPerInch = 96
   TextHeight = 13
   object MainMenu1: TMainMenu

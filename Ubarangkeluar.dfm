@@ -204,6 +204,8 @@ object FormBarangKeluar: TFormBarangKeluar
     Top = 248
     Width = 200
     Height = 21
+    Date = 45402.000000000000000000
+    Time = 45402.000000000000000000
     TabOrder = 11
   end
   object ADOTableBarangKeluar: TADOTable

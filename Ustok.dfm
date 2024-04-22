@@ -12,14 +12,13 @@ object FormStok: TFormStok
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
-  Visible = True
   WindowState = wsMinimized
   PixelsPerInch = 96
   TextHeight = 13
   object DBGrid1: TDBGrid
-    Left = 171
-    Top = 8
-    Width = 337
+    Left = 160
+    Top = 12
+    Width = 360
     Height = 321
     DataSource = DataSourceStok
     TabOrder = 0
@@ -62,6 +61,7 @@ object FormStok: TFormStok
     Active = True
     Connection = FormMenuUtama.ADOToko
     CursorType = ctStatic
+    LockType = ltReadOnly
     TableName = 'stok'
     Left = 216
     Top = 104
